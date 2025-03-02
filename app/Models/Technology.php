@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Technology extends Model
 {
-    //
+    public function experiences()
+    {
+        return $this->belongsToMany(Experience::class, 'experiences_technologies');
+    }
 }
