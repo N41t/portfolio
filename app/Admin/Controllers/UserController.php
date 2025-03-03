@@ -43,10 +43,10 @@ class UserController extends AdminController
      * @param mixed   $id
      * @return Show
      */
-    // Отображает информацию из таблицы Experience по методу show()
+    // Отображает информацию из таблицы User по методу show()
     protected function detail($id)
     {
-        $show = new Show(Experience::findOrFail($id));
+        $show = new Show(User::findOrFail($id));
 
         $show->field('id', __('ID'));
         $show->field('name', __('Имя'));
@@ -65,7 +65,7 @@ class UserController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Experience());
+        $form = new Form(new User());
 
         $form->display('id', __('ID'));
         $form->text('name', __('Имя'));
