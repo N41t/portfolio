@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin\Controllers\ProjectController;
 use Illuminate\Routing\Router;
 use App\Admin\Controllers\ExperienceController;
 use \App\Admin\Controllers\UserController;
@@ -18,5 +19,6 @@ Route::group([
     $router->resource('/experiences', ExperienceController::class);
     $router->resource('/users', UserController::class);
     $router->resource('/technologies', TechnologyController::class);
+    $router->resource('/projects', ProjectController::class);
 
 });
