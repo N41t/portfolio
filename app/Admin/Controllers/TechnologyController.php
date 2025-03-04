@@ -29,7 +29,7 @@ class TechnologyController extends AdminController
 
         $grid->column('id', __('ID'))->sortable();
         $grid->column('title', __('Название'))->sortable();
-        $grid->column('icon', __('Иконка'))->image();
+        $grid->column('icon', __('Иконка'))->image('/storage/');
 
         return $grid;
     }
@@ -47,7 +47,7 @@ class TechnologyController extends AdminController
 
         $show->field('id', __('ID'));
         $show->field('title', __('Название'));
-        $show->field('icon', __('Иконка'))->image();
+        $show->field('icon', __('Иконка'))->image('/storage/');
 
         return $show;
     }
@@ -57,6 +57,8 @@ class TechnologyController extends AdminController
      *
      * @return Form
      */
+
+    // Редактирование
     protected function form()
     {
         $form = new Form(new Technology());

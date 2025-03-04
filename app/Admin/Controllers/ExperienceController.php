@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Experience;
+use App\Models\Technology;
+use Encore\Admin\Auth\Database\Role;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -33,6 +35,17 @@ class ExperienceController extends AdminController
         $grid->column('date_from', __('Дата от'))->sortable()->date();
         $grid->column('date_to', __('Дата до'))->sortable()->date();
         $grid->column('company_name', __('Компания'))->sortable();
+
+        // отображение тегов
+        $grid->technologies()->display(function ($technologies) {
+            $technologies = array_map(function ($technology) {
+                return "<span class='label label-success'>{$technology['title']}</span>";
+            }, $technologies);
+
+            return join('&nbsp;', $technologies);
+        });
+
+
 
         return $grid;
     }
@@ -73,6 +86,8 @@ class ExperienceController extends AdminController
         $form->date('date_from', __('Дата от'));
         $form->date('date_to', __('Дата до'));
         $form->text('company_name', __('Компания'));
+        $form->multipleSelect('technologies', 'Технологии')
+            ->options(Technology::all()->pluck('title', 'id'));
 
         return $form;
     }
