@@ -5,6 +5,7 @@ use Illuminate\Routing\Router;
 use App\Admin\Controllers\ExperienceController;
 use \App\Admin\Controllers\UserController;
 use \App\Admin\Controllers\TechnologyController;
+use \App\Admin\Controllers\TrainingController;
 
 Admin::routes();
 
@@ -20,5 +21,6 @@ Route::group([
     $router->resource('/users', UserController::class);
     $router->resource('/technologies', TechnologyController::class);
     $router->resource('/projects', ProjectController::class);
+    $router->resource('/trainings', TrainingController::class);
 
 });
