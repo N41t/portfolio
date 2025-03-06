@@ -20,7 +20,7 @@ class ProjectResource extends JsonResource
           'title' => $this->title,
           'description' => $this->description,
           'link' => $this->link,
-          'image' => asset('storage' . $this->image),
+          'image' => asset('storage/' . $this->image),
         ];
     }
 }
