@@ -14,7 +14,8 @@ class ExperienceController extends Controller
     // вывод информ. со всех полей по Project
     public function index()
     {
-        return ExperienceResource::collection(Experience::all());
+        $experiences = Experience::with('technologies')->get();
+        return ExperienceResource::collection($experiences);
     }
 
     public function show(Experience $experience)
