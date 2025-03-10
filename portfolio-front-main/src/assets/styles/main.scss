@@ -1,0 +1,32 @@
+@import '../../assets/styles/services/main-services.scss';
+
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+html {
+	background-color: $dark_blue;
+	scroll-behavior: smooth;
+}
+
+.container {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1088px;
+	@media (max-width: $media-m) {
+		max-width: 95%;
+	}
+}
+
+.content {
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	@media (max-width: $media-m) {
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+}

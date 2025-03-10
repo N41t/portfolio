@@ -6,6 +6,75 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+use OpenApi\Attributes\Schema;
+use OpenApi\Attributes\Property;
+use OpenApi\Attributes\Xml;
+
+
+#[Schema(
+    title: 'UserResource',
+    description: 'User',
+    properties: [
+        new Property(
+            property: 'id',
+            description: 'Идентификатор записи',
+            type: 'integer'
+        ),
+        new Property(
+            property: 'name',
+            description: 'Имя',
+            type: 'string'
+        ),
+        new Property(
+            property: 'surname',
+            description: 'Фамилия',
+            type: 'string'
+        ),
+        new Property(
+            property: 'position',
+            description: 'Должность',
+            type: 'string'
+        ),
+        new Property(
+            property: 'description',
+            description: 'О себе',
+            type: 'string'
+        ),
+        new Property(
+            property: 'interests',
+            description: 'Интересы',
+            type: 'string'
+        ),
+        new Property(
+            property: 'linkedin',
+            description: 'linkedin',
+            type: 'string'
+        ),
+        new Property(
+            property: 'telegram',
+            description: 'telegram',
+            type: 'string'
+        ),
+        new Property(
+            property: 'gitlab',
+            description: 'gitlab',
+            type: 'string'
+        ),
+        new Property(
+            property: 'github',
+            description: 'github',
+            type: 'string'
+        ),
+        new Property(
+            property: 'image',
+            description: 'image',
+            type: 'string'
+        ),
+    ],
+    xml: new Xml(
+        name: 'UserResource'
+    )
+)]
 class UserResource extends JsonResource
 {
     /**
