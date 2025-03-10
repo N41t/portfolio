@@ -23,6 +23,11 @@ class UserResource extends JsonResource
           'position' => $this->position,
           'description' => $this->description,
           'interests' => $this->interests,
+          'linkedin' => $this->linkedin,
+          'telegram' => $this->telegram,
+          'gitlab' => $this->gitlab,
+          'github' => $this->github,
+          'image' => asset('storage/' . $this->image),
         ];
     }
 }

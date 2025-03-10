@@ -13,8 +13,7 @@ class UserController extends Controller
     // вывод информ. со всех полей по Project
     public function index()
     {
-        $users = User::with('users')->get();
-        return UserResource::collection($users);
+        return UserResource::collection(User::all());
     }
 
     public function show(User $user)
