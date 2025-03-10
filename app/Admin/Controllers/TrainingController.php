@@ -3,19 +3,20 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Project;
+use App\Models\Training;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class ProjectController extends AdminController
+class TrainingController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'Project controller';
+    protected $title = 'Training controller';
 
     /**
      * Make a grid builder.
@@ -25,13 +26,15 @@ class ProjectController extends AdminController
     // Выводит список всех записей из таблицы Experience
     protected function grid()
     {
-        $grid = new Grid(new Project());
+        $grid = new Grid(new Training());
 
         $grid->column('id', __('ID'))->sortable();
         $grid->column('title', __('Название'))->sortable();
-        $grid->column('description', __('Описание'))->sortable();
-        $grid->column('link', __('Ссылка'))->sortable();
-        $grid->column('image', __('Картинка'))->image('/storage/');
+        $grid->column('qualification', __('Квалификация'))->sortable();
+        $grid->column('program_name', __('Программа'))->sortable();
+        $grid->column('date_from', __('Дата от'))->sortable();
+        $grid->column('date_to', __('Дата до'))->sortable();
+
 
         return $grid;
     }
@@ -45,13 +48,14 @@ class ProjectController extends AdminController
     // Отображает информацию из таблицы User по методу show()
     protected function detail($id)
     {
-        $show = new Show(Project::findOrFail($id));
+        $show = new Show(Training::findOrFail($id));
 
         $show->field('id', __('ID'));
         $show->field('title', __('Название'));
-        $show->field('description', __('Описание'))->sortable();
-        $show->field('link', __('Ссылка'))->sortable();
-        $show->field('image', __('Картинка'))->image('/storage/');
+        $show->field('qualification', __('Квалификация'));
+        $show->field('program_name', __('Программа'));
+        $show->field('date_from', __('Дата от'));
+        $show->field('date_to', __('Дата до'));
 
         return $show;
     }
@@ -65,13 +69,14 @@ class ProjectController extends AdminController
     // Редактирование
     protected function form()
     {
-        $form = new Form(new Project());
+        $form = new Form(new Training());
 
         $form->display('id', __('ID'));
         $form->text('title', __('Название'));
-        $form->textarea('description', __('Описание'));
-        $form->text('link', __('Ссылка'));
-        $form->image('image', __('Картинка'));
+        $form->text('qualification', __('Квалификация'));
+        $form->text('program_name', __('Программа'));
+        $form->date('date_from', __('Дата от'));
+        $form->date('date_to', __('Дата до'));
 
         return $form;
     }
